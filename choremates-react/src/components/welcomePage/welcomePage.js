@@ -7,7 +7,7 @@ import './welcomePage.css';
 const welcomePage = () => {
    return (
       <div>
-         <div style={{ textAlign: 'center' }}><h1>ChoreMates</h1></div>
+         <div className='title'><h1>ChoreMates</h1></div>
          <div className='credentials'>UserName: <input
             type="text"
             placeholder="Type something here"

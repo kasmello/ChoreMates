@@ -2,7 +2,11 @@ body {
     color: black;
 }
 
-.credentials {
+
+
+.registerBox {
+    background-color: white;
+    border-radius: 5px;
     text-align: center;
 }
 
