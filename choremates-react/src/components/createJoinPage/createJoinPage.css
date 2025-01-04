@@ -1,0 +1,16 @@
+body {
+    color: black;
+}
+
+
+
+.registerBox {
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.title {
+    padding: 5rem 0;
+    text-align: center;
+}

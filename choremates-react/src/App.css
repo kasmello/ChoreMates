@@ -1,0 +1,24 @@
+body {
+  background-color: #8cc5e9;
+}
+
+/* Define the custom font */
+@font-face {
+  font-family: 'TrebuchetMS';
+  src: url('media/trebuc.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font globally */
+body {
+  font-family: 'TrebuchetMS', sans-serif;
+}
+
+/* Apply the font to specific elements */
+h1, h2, h3 {
+  font-family: 'TrebuchetMS', serif;
+}
+
+
+
