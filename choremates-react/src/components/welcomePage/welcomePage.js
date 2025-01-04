@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './welcomePage.js';
 import './welcomePage.css';
+import { Link } from 'react-router-dom';
 
 
 const welcomePage = () => {
    return (
       <div>
          <div className='title'><h1>ChoreMates</h1></div>
-         <div className='credentials'>UserName: <input
+         <div className='credentials'>Username: <input
             type="text"
             placeholder="Type something here"
          />
@@ -21,7 +22,7 @@ const welcomePage = () => {
           type="checkbox"
          /></div>
          <div style={{ textAlign: 'center' }}><button>Login</button></div>
-         <div style={{ textAlign: 'center' }}>Don't have an account? Register</div>
+         <div style={{ textAlign: 'center' }}>Don't have an account? <Link to="/register">Register</Link></div>
       </div>
       
    );

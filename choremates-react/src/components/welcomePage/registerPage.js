@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './registerPage.js';
 import './registerPage.css';
+import { Link } from 'react-router-dom';
 
 
 const registerPage = () => {
@@ -22,6 +23,8 @@ const registerPage = () => {
             placeholder="Type something here"
          /></div>
          <div style={{ textAlign: 'center' }}><button>Register and Login</button></div>
+         <div style={{ textAlign: 'center' }}>Have an account? <Link to='/'>Login</Link></div>
+
       </div>
       
    );

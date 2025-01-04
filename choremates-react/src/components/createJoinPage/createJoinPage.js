@@ -28,7 +28,7 @@ const createJoinPage = () => {
             // checked={selectedOption === "A"}
             // onChange={handleChange}
           />
-          Option A
+          Anyone with the code
         </label>
         <label>
           <input
@@ -37,14 +37,14 @@ const createJoinPage = () => {
             // checked={selectedOption === "B"}
             // onChange={handleChange}
           />
-          Option B
+          Invite only
         </label>
          </div>
          </div>
          
 
          </div>
-         <div>OR enter a household code to join</div>
+         <div className='join'>OR enter a household code to join</div>
          <input
             type="text"
             placeholder="Type something here"
