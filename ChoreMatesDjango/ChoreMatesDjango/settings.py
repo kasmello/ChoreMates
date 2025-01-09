@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +31,13 @@ ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'compute.amazonaws.com']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+# Load the .env file
+load_dotenv()
 
+# Access the environment variables
+user = os.getenv("USER")
+password = os.getenv("PASSWORD")
+host = os.getenv("HOST")
 
 # Application definition
 
@@ -86,9 +94,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'KarmelHan2000',
-        'HOST': 'choremates-db.cn0y06kckc8b.ap-southeast-2.rds.amazonaws.com',  # or your PostgreSQL host
+        'USER': user,
+        'PASSWORD': password,
+        'HOST': host,  # or your PostgreSQL host
         'PORT': '5432',       # default PostgreSQL port
     }
 }
