@@ -2,7 +2,9 @@ body {
     color: black;
 }
 
-
+.join {
+    text-align: center;
+}
 
 .registerBox {
     background-color: white;
