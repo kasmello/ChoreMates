@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import './registerPage.js';
 import './registerPage.css';
 import { Link } from 'react-router-dom';
+// import { useState } from 'react';
+
 
 
 const registerPage = () => {
+   // const [userName, setUserName] = useState();
+   // const [password, setPassword] = useState();
+
    return (
       <div>
          <div className='title'><h1>Register your account</h1></div>

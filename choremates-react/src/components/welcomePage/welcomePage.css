@@ -9,4 +9,11 @@ body {
 .title {
     padding: 5rem 0;
     text-align: center;
+    letter-spacing: 0.1rem;
+}
+
+.credTextBox {
+    border-radius: 10px; /* Adjust the value as needed */
+    border: 1px solid #ccc; /* Optional: adds a border */
+    padding: 10px; /* Optional: adds some padding */
 }
