@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-yucbz#joas8z(ugrhcl84ig46&idl+ld1olsh@ent)^h1i#y+z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'compute.amazonaws.com']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -81,13 +81,14 @@ WSGI_APPLICATION = 'ChoreMatesDjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'password12345',
-        'HOST': 'localhost',  # or your PostgreSQL host
+        'PASSWORD': 'KarmelHan2000',
+        'HOST': 'choremates-db.cn0y06kckc8b.ap-southeast-2.rds.amazonaws.com',  # or your PostgreSQL host
         'PORT': '5432',       # default PostgreSQL port
     }
 }
