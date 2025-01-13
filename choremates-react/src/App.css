@@ -5,7 +5,7 @@ body {
 /* Define the custom font */
 @font-face {
   font-family: 'TrebuchetMS';
-  src: url('media/trebuc.ttf') format('truetype');
+  src: url('frontEndMedia/trebuc.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
