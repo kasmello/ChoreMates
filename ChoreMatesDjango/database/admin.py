@@ -13,4 +13,4 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Chore)
 class ChoreAdmin(admin.ModelAdmin):
-    list_display = ('id', 'household', 'completedBy', 'choreName', 'timeReset')
+    list_display = ('id', 'household', 'completedBy', 'choreName', 'timeReset', 'description')

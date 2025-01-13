@@ -17,4 +17,4 @@ class UserSerializer(serializers.ModelSerializer):
 class ChoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chore
-        fields = ['id', 'household', 'completedBy', 'choreName', 'timeReset']
+        fields = ['id', 'household', 'completedBy', 'choreName', 'timeReset', 'description']

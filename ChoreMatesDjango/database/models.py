@@ -44,6 +44,7 @@ class Chore(models.Model):
     completedBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='completed_chores')
     choreName = models.CharField(max_length=255, null=False)
     timeReset = models.IntegerField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.choreName
