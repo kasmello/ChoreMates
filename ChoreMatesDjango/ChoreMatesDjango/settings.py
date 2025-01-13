@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
+import pymysql
 from pathlib import Path
 from dotenv import load_dotenv
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,10 +37,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 load_dotenv()
 
 # Access the environment variables
-user = os.getenv("USER")
+user = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 host = os.getenv("HOST")
-
+print(host, user, password)
 # Application definition
 
 INSTALLED_APPS = [
@@ -92,12 +94,12 @@ WSGI_APPLICATION = 'ChoreMatesDjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'production',
         'USER': user,
         'PASSWORD': password,
         'HOST': host,  # or your PostgreSQL host
-        'PORT': '5432',       # default PostgreSQL port
+        'PORT': '3306',       # default PostgreSQL port
     }
 }
 
