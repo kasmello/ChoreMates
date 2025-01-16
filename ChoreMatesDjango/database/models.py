@@ -48,3 +48,15 @@ class Chore(models.Model):
 
     def __str__(self):
         return self.choreName
+    
+class CompleteChores(models.Model):
+    id = models.IntegerField(primary_key=True)
+    choreName = models.CharField(max_length=255)
+    timeReset = models.IntegerField()
+    description = models.TextField()
+    household = models.CharField(max_length=255)
+    user = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'complete_chores'  # Name of the database view
+        managed = False  # Django will not create, update, or delete the view
