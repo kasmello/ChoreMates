@@ -23,7 +23,7 @@ class UserManager(BaseUserManager):
         return user
 
 # Users Table
-class User(AbstractBaseUser):
+class ChoreMatesUser(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, null=False)
     household = models.ForeignKey(Household, on_delete=models.CASCADE, related_name='users')
@@ -41,7 +41,7 @@ class User(AbstractBaseUser):
 class Chore(models.Model):
     id = models.AutoField(primary_key=True)
     household = models.ForeignKey(Household, on_delete=models.CASCADE, related_name='chores', null=False)
-    completedBy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='completed_chores')
+    completedBy = models.ForeignKey(ChoreMatesUser, on_delete=models.SET_NULL, null=True, blank=True, related_name='completed_chores')
     choreName = models.CharField(max_length=255, null=False)
     timeReset = models.IntegerField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)

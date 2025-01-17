@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Household, User, Chore
+from .models import Household, ChoreMatesUser, Chore
 
 # Household Serializer
 class HouseholdSerializer(serializers.ModelSerializer):
@@ -10,7 +10,7 @@ class HouseholdSerializer(serializers.ModelSerializer):
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = ChoreMatesUser
         fields = ['id', 'name', 'household']
 
 # Chore Serializer
