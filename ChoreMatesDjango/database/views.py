@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import Household, ChoreMatesUser, Chore
+from .models import Household, ChoreMatesUser, CompleteChores
 from .serializers import HouseholdSerializer, UserSerializer, ChoreSerializer
 
 # Household Viewset
@@ -14,5 +14,5 @@ class UserViewSet(viewsets.ModelViewSet):
 
 # Chore Viewset
 class ChoreViewSet(viewsets.ModelViewSet):
-    queryset = Chore.objects.all()
+    queryset = CompleteChores.objects.all()
     serializer_class = ChoreSerializer
