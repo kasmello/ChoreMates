@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Household, ChoreMatesUser, CompleteChores, Chore
+from .models import Household, ChoreMatesUser, Chore
 
 class HouseholdSerializer(serializers.ModelSerializer):
     class Meta:

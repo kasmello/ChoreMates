@@ -16,7 +16,7 @@ class HouseholdViewSet(viewsets.ModelViewSet):
     ordering = ['name']  # Default ordering if no ordering is specified
 
 class ChoreViewSet(viewsets.ModelViewSet):
-    queryset = CompleteChores.objects.all()
+    queryset = Chore.objects.all()
     serializer_class = ChoreSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
     search_fields = ['choreName', 'description', 'household__name']  # Fields to search on
@@ -31,26 +31,7 @@ class ChoreMatesUserViewSet(viewsets.ModelViewSet):
     ordering_fields = '__all__'
     ordering = ['username']
 
-'''
-@api_view(['POST'])
-def register(request):
-    if request.method == 'POST':
-        serializer = ChoreMatesUserSerializer(data=request.data)
-        
-        if serializer.is_valid():
-            # Save the new user
-            user = serializer.save()
-            
-            # Create an authentication token for the user
-            token, created = Token.objects.get_or_create(user=user)
 
-            # Send back the user data along with the token
-            response_data = {
-                'user': serializer.data,
-                'token': token.key
-            }
-            return Response(response_data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)'''
+
 
 
