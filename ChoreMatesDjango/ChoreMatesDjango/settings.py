@@ -36,6 +36,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Load the .env file
 load_dotenv()
 
+
+AUTH_USER_MODEL = 'database.ChoreMatesUser'
+
+
 # Access the environment variables
 user = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
@@ -53,7 +57,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'database',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'django_filters',
+
 ]
 
 MIDDLEWARE = [
@@ -95,13 +101,14 @@ WSGI_APPLICATION = 'ChoreMatesDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'production',
-        'USER': user,
-        'PASSWORD': password,
-        'HOST': host,  # or your PostgreSQL host
+        'NAME': 'chorematesdb',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',  # or your PostgreSQL host
         'PORT': '3306',       # default PostgreSQL port
     }
 }
+
 
 
 # Password validation

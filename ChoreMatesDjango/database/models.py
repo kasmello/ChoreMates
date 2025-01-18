@@ -1,6 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+class ChoreMatesUserManager(BaseUserManager):
+    def create_user(self, username, password=None, **extra_fields):
+        if not username:
+            raise ValueError('The Username must be set')
+        user = self.model(username=username, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, username, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        return self.create_user(username, password, **extra_fields)
+
+
+
+
 # Households Table
 class Household(models.Model):
     id = models.AutoField(primary_key=True)
@@ -12,29 +30,37 @@ class Household(models.Model):
         return self.name
 
 
-# Custom User Manager
-class UserManager(BaseUserManager):
-    def create_user(self, name, password=None, household=None):
-        if not name:
-            raise ValueError('Users must have a name')
-        user = self.model(name=name, household=household)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
 
-# Users Table
 class ChoreMatesUser(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, null=False)
-    household = models.ForeignKey(Household, on_delete=models.CASCADE, related_name='users')
-    
-    USERNAME_FIELD = 'name'
-    REQUIRED_FIELDS = []
+    username = models.CharField(max_length=255, unique=True, null=False)
+    password = models.CharField(max_length=255, null=False)
+    is_staff = models.BooleanField(default=False)  # Required for the admin interface
+    is_superuser = models.BooleanField(default=False)  # Required for superuser status
+    household = models.ForeignKey(
+        Household, 
+        on_delete=models.CASCADE, 
+        related_name='users', 
+        blank=True, 
+        null=True
+    )
 
-    objects = UserManager()
+    objects = ChoreMatesUserManager()
+
+    USERNAME_FIELD = 'username'  # This specifies the field to be used for authentication
+    REQUIRED_FIELDS = []  # Password is handled by AbstractBaseUser
 
     def __str__(self):
-        return self.name
+        return self.username
+
+    def has_perm(self, perm, obj=None):
+        # Simplified: Customize this method if you need specific permission logic
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        # Simplified: Adjust this logic if needed
+        return self.is_superuser
+
 
 
 # Chores Table
@@ -48,3 +74,7 @@ class Chore(models.Model):
 
     def __str__(self):
         return self.choreName
+
+
+
+
