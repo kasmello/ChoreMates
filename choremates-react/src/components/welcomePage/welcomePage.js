@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './welcomePage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 const WelcomePage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
@@ -25,9 +26,9 @@ const WelcomePage = () => {
             const user = users.find(user => user.username === username && user.password === password);
 
             if (user) {
-                alert('Login successful');
+               navigate('/chores');
             } else {
-                alert('Invalid username or password');
+               alert('Invalid username or password');
             }
         } catch (error) {
             console.error(error);

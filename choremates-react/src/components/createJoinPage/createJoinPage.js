@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './createJoinPage.css';
+import { Link, useNavigate} from 'react-router-dom';
 
 const CreateJoinPage = () => {
     const [householdName, setHouseholdName] = useState('');
     const [description, setDescription] = useState('');
     const [joinCode, setJoinCode] = useState(''); // State to store the code entered by the user
+    const navigate = useNavigate();
 
     const generateHouseholdCode = () => {
         // Generate a unique 6-digit code
@@ -58,6 +60,7 @@ const CreateJoinPage = () => {
             }
 
             alert(`Household created successfully with code: ${householdCode}`);
+            navigate('/chores');
         } catch (error) {
             console.error(error);
             alert('An error occurred. Please try again.');
@@ -105,6 +108,7 @@ const CreateJoinPage = () => {
             }
 
             alert(`Successfully joined the household with code: ${joinCode}`);
+            navigate('/chores');
         } catch (error) {
             console.error(error);
             alert('An error occurred while joining the household.');
