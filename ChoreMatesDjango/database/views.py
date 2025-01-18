@@ -16,7 +16,7 @@ class HouseholdViewSet(viewsets.ModelViewSet):
     ordering = ['name']  # Default ordering if no ordering is specified
 
 class ChoreViewSet(viewsets.ModelViewSet):
-    queryset = Chore.objects.all()
+    queryset = CompleteChores.objects.all()
     serializer_class = ChoreSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
     search_fields = ['choreName', 'description', 'household__name']  # Fields to search on
