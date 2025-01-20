@@ -44,7 +44,6 @@ AUTH_USER_MODEL = 'database.ChoreMatesUser'
 user = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 host = os.getenv("HOST")
-print(host, user, password)
 # Application definition
 
 INSTALLED_APPS = [
@@ -101,10 +100,10 @@ WSGI_APPLICATION = 'ChoreMatesDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'chorematesdb',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',  # or your PostgreSQL host
+        'NAME': 'production',
+        'USER': user,
+        'PASSWORD': password,
+        'HOST': host,  # or your PostgreSQL host
         'PORT': '3306',       # default PostgreSQL port
     }
 }

@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('database', '0002_auto_20250115_2257'),
+        ('database', '0002_make_completechores_view'),
     ]
 
     operations = [
