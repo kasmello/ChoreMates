@@ -40,6 +40,11 @@ load_dotenv()
 AUTH_USER_MODEL = 'database.ChoreMatesUser'
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}
+
+
 # Access the environment variables
 user = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")

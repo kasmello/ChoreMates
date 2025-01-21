@@ -9,6 +9,8 @@ const RegisterPage = () => {
    const [retypePassword, setRetypePassword] = useState('');
    const navigate = useNavigate();
 
+
+   //Create new user
    const handleRegister = async () => {
       if (password !== retypePassword) {
          alert('Passwords do not match!');
@@ -21,25 +23,24 @@ const RegisterPage = () => {
             headers: {
                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ 
+               username, 
+               password }),
          });
 
-         if (!response.ok) {
-            throw new Error('Failed to register user');
-         }
+         const user = await response.json();
+         
+         localStorage.setItem('userId', user.id);
+         localStorage.setItem('householdId', user.household);
 
-         const data = await response.json();
-         // Store the id from the response in local storage
-         localStorage.setItem('userId', data.id);
-
-         // Redirect to the /join page
+      
          navigate('/join');
       } catch (error) {
-         console.error(error);
-         alert('An error occurred while registering. Please try again.');
+         alert('Error registering');
       }
    };
 
+   
    return (
       <div>
          <div className='title'><h1>Register your account</h1></div>

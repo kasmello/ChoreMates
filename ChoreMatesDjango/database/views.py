@@ -6,30 +6,34 @@ from .serializers import HouseholdSerializer, ChoreSerializer, ChoreMatesUserSer
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from django_filters.rest_framework import DjangoFilterBackend
+import random
 
 class HouseholdViewSet(viewsets.ModelViewSet):
     queryset = Household.objects.all()
     serializer_class = HouseholdSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
-    search_fields = ['name', 'description', 'code']  # Fields that can be searched
-    ordering_fields = '__all__'  # Allows ordering by any field in the model
-    ordering = ['name']  # Default ordering if no ordering is specified
+    filterset_fields = ['code']
+
+    def generate_unique_code(self):
+        """Generates a unique 6-digit code."""
+        while True:
+            code = str(random.randint(100000, 999999))  # Generate a 6-digit code
+            if not Household.objects.filter(code=code).exists():
+                return code
+
+    def perform_create(self, serializer):
+        """Override perform_create to assign a unique 6-digit code to the household."""
+        unique_code = self.generate_unique_code()
+        serializer.save(code=unique_code)  # Save with the generated unique code
 
 class ChoreViewSet(viewsets.ModelViewSet):
     queryset = Chore.objects.all()
     serializer_class = ChoreSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
-    search_fields = ['choreName', 'description', 'household__name']  # Fields to search on
-    ordering_fields = '__all__'
-    ordering = ['choreName']
+    filterset_fields = ['household']
 
 class ChoreMatesUserViewSet(viewsets.ModelViewSet):
     queryset = ChoreMatesUser.objects.all()
     serializer_class = ChoreMatesUserSerializer
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
-    search_fields = ['username', 'password', 'is_staff']  # Fields to search on
-    ordering_fields = '__all__'
-    ordering = ['username']
+
 
 
 

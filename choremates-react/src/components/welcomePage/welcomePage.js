@@ -8,9 +8,10 @@ const WelcomePage = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    //Login existing user
     const handleLogin = async () => {
         try {
-            // Send a POST request to check if the user exists with the provided credentials
+    
             const response = await fetch('http://127.0.0.1:8000/api/users/', {
                 method: 'GET',
                 headers: {
@@ -19,7 +20,7 @@ const WelcomePage = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to fetch users');
+                alert('Failed to fetch users');
             }
 
             const users = await response.json();
@@ -27,12 +28,13 @@ const WelcomePage = () => {
 
             if (user) {
                navigate('/chores');
+               localStorage.setItem('userId', user.id);
+               localStorage.setItem('householdId', user.household);
             } else {
                alert('Invalid username or password');
             }
         } catch (error) {
-            console.error(error);
-            alert('An error occurred during login');
+            alert('Login error');
         }
     };
 
@@ -54,7 +56,7 @@ const WelcomePage = () => {
                 Password: <input
                     type="password"
                     className="credTextBox"
-                    placeholder="Type something here"
+                    placeholder="Type password here"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
