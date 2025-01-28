@@ -30,6 +30,14 @@ const WelcomePage = () => {
                navigate('/chores');
                localStorage.setItem('userId', user.id);
                localStorage.setItem('householdId', user.household);
+               const householdResponse = await fetch(`http://127.0.0.1:8000/api/households/?id=${user.household}`);
+               if (!householdResponse.ok) {
+                  console.log('Failed to grab household details')
+               }
+               const household = await householdResponse.json()
+               localStorage.setItem('householdName',household[0].name);
+               localStorage.setItem('householdDescription',household[0].description)
+               localStorage.setItem('householdCode',household[0].code)
             } else {
                alert('Invalid username or password');
             }

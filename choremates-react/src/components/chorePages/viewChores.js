@@ -98,11 +98,12 @@ const ViewChores = () => {
    
    return (
      <div>
-       <h1>Household Chores</h1>
+       <h1>{localStorage.getItem('householdName')}'s Chores</h1>
        {loading ? (
          <p>Loading chores...</p>
        ) : (
          <>
+           <p>Join Code: {localStorage.getItem('householdCode')}</p>
            <div className="choreBox">
              <table>
                <thead>

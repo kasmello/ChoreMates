@@ -31,6 +31,11 @@ const CreateJoinPage = () => {
   
       
           localStorage.setItem('householdId', householdData.id);
+          localStorage.setItem('householdName',householdData[0].name);
+          localStorage.setItem('householdDescription',householdData[0].description)
+         localStorage.setItem('householdCode',householdData[0].code)
+          
+
   
         
           const userId = localStorage.getItem('userId');
@@ -81,6 +86,10 @@ const CreateJoinPage = () => {
 
     
         localStorage.setItem('householdId', householdId);
+        
+        localStorage.setItem('householdName',householdData[0].name);
+         localStorage.setItem('householdDescription',householdData[0].description)
+         localStorage.setItem('householdCode',householdData[0].code)
 
     
         const userId = localStorage.getItem('userId');
@@ -101,6 +110,7 @@ const CreateJoinPage = () => {
         }
 
         alert(`Successfully joined household`);
+
         navigate('/chores');
     } catch (error) {
         alert('Error joining household');
